@@ -46,14 +46,3 @@ target_link_libraries(${PROJECT_NAME} PRIVATE jsoncpp_static)
 add_executable(test 
     test/test.cpp)
 target_link_libraries(test PRIVATE split_words)
-
-
-
-
-
-
-
-
-
-
-

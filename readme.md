@@ -48,7 +48,7 @@ int main()
 }
 ```
 
-Hava fun ！
+Have fun ！
 
 ## 开源协议
 

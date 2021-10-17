@@ -7,7 +7,7 @@ set(CMAKE_CXX_STANDARD 11)
 # 指定工程名字
 project (split_words)
 
-# 指定工程类型(共享库)以及源文件
+# 指定工程类型以及源文件
 add_library(${PROJECT_NAME} 
     STATIC 
         src/split_words.cpp

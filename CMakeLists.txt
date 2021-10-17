@@ -62,7 +62,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE jsoncpp_static)
 CPMAddPackage(
     NAME httplib	 
     GIT_TAG master
-    GIT_REPOSITORY https://hub.fastgit.org/yhirose/cpp-httplib
+    GIT_REPOSITORY https://github.com/yhirose/cpp-httplib
     DOWNLOAD_ONLY YES
 )
 target_include_directories(${PROJECT_NAME} PRIVATE ${httplib_SOURCE_DIR})

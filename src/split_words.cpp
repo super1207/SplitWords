@@ -73,3 +73,49 @@ vector<string> split_words(const string &input_str, double threshold)
         throw runtime_error(string("unkonw error:") + e.what());
     }
 }
+
+vector<string> split_words_jb(const string &input_str)
+{
+    try
+    {
+        httplib::Client cli("http://cppjieba-webdemo.herokuapp.com");
+        httplib::Params params;
+        params.emplace("sentence", input_str);
+        auto res = cli.Post("/",params);
+        if (!res)
+        {
+            throw MyException("get response error:the response is null");
+        }
+        if (res->status != 200)
+        {
+            throw MyException("the response code is not 200:" + to_string(res->status));
+        }
+        Json::Reader reader;
+        Json::Value root;
+        if (!reader.parse(res->body, root) || !root.isArray())
+        {
+            throw MyException("the response json can't be parse:" + res->body);
+        }
+        vector<string> ret_vec;
+        try
+        {
+            for (auto &it : root)
+            {
+                ret_vec.push_back(it.asString());
+            }
+        }
+        catch (const std::exception &e)
+        {
+            throw MyException("can't get data from the response json:" + res->body + e.what());
+        }
+        return ret_vec;
+    }
+    catch (const MyException &e)
+    {
+        throw runtime_error(e.what());
+    }
+    catch (const exception &e)
+    {
+        throw runtime_error(string("unkonw error:") + e.what());
+    }
+}

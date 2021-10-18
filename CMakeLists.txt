@@ -75,3 +75,8 @@ add_executable(test
     test/test.cpp)
 target_link_libraries(test PRIVATE split_words)
 
+# 添加测试：基于结巴分词器的在线演示，不要滥用，仅做测试
+add_executable(test_jb
+    test/test_jb.cpp)
+target_link_libraries(test_jb PRIVATE split_words)
+
